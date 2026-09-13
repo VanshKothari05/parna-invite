@@ -463,10 +463,11 @@
 }
 
 .gate__cue-text {
-  font-family: var(--font-devanagari);
-  font-size: clamp(0.78rem, 3.3vw, 0.96rem);
-  color: var(--ink-soft);
-  letter-spacing: 0.07em;
+  font-family: var(--font-body);
+  font-size: clamp(1.15rem, 5vw, 1.35rem);
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: 0.04em;
 }
 
 @keyframes cuePulse {

@@ -52,6 +52,45 @@
     0 0 0 1px rgba(184, 96, 122, 0.18);
 }
 
+.scroll-hint {
+  position: fixed;
+  right: 76px;
+  bottom: max(22px, env(safe-area-inset-bottom, 22px));
+  z-index: 40;
+  min-height: 42px;
+  padding: 0 13px;
+  border: 1px solid rgba(231, 132, 192, 0.3);
+  border-radius: 21px;
+  background: rgba(58, 35, 51, 0.92);
+  color: #ffffff;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 3px 18px rgba(10, 3, 9, 0.3);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font: 700 0.78rem var(--font-body);
+  letter-spacing: 0.03em;
+  cursor: pointer;
+  animation: scrollHintFloat 2s ease-in-out infinite;
+}
+
+.scroll-hint__arrow {
+  color: var(--wine);
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+@keyframes scrollHintFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(4px);
+  }
+}
+
 .music-toggle__bars {
   display: flex;
   align-items: flex-end;
@@ -98,6 +137,9 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .scroll-hint {
+    animation: none;
+  }
   .music-toggle--playing .music-toggle__bars i {
     animation: none;
     height: 65%;
