@@ -1,0 +1,22 @@
+@import './styles/gate.css';
+@import './styles/shared.css';
+@import './styles/sections.css';
+
+.invitation {
+  opacity: 0;
+  /* Fades in at 0.7s — overlaps with gate overlay fading out (0.85s).
+     The two transitions run simultaneously: dark fades out, light fades in. */
+  transition: opacity 0.7s ease;
+  pointer-events: none;
+  will-change: opacity;
+}
+
+.invitation--visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .invitation { transition: opacity 0.25s ease; }
+}
+
