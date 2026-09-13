@@ -1,41 +1,41 @@
 :root {
-  /* ── Base backgrounds — ivory with orchid undertone ─ */
-  --ivory:     #FAF3F8;
-  --cream:     #F5EBF2;
-  --blush:     #EDE0F2;
-  --peach:     #F5DECE;
+  /* ── Base backgrounds — deep wine/plum ───────────── */
+  --ivory: #241722;
+  --cream: #2a1927;
+  --blush: #301c2d;
+  --peach: #382033;
 
   /* ── Orchid / pink / purple palette ─────────────── */
-  --wine:       #7A1F55;
-  --wine-deep:  #581040;
-  --rose:       #B84E88;
-  --rose-soft:  #D4A0C8;
-  --blush-mid:  #EAB8D8;
-  --lavender:   #C0ADCE;
-  --gold:       #9E7834;   /* muted — only for Jain accents */
-  --gold-soft:  #BE9850;
+  --wine: #e986c4;
+  --wine-deep: #f2a1dc;
+  --rose: #e784c0;
+  --rose-soft: #c77aaa;
+  --blush-mid: #d78bbc;
+  --lavender: #ad86aa;
+  --gold: #9e7834; /* muted — only for Jain accents */
+  --gold-soft: #be9850;
 
   /* ── Text ────────────────────────────────────────── */
-  --ink:        #3A2438;
-  --ink-soft:   #6A4A62;
-  --ink-faint:  #9A80A0;
+  --ink: #f2b5df;
+  --ink-soft: #d69cc6;
+  --ink-faint: #af7fa4;
 
   /* ── Lines ───────────────────────────────────────── */
-  --line:       rgba(122, 31, 85, 0.15);
-  --line-rose:  rgba(184, 78, 136, 0.28);
+  --line: rgba(231, 132, 192, 0.18);
+  --line-rose: rgba(231, 132, 192, 0.34);
 
   /* ── Legacy aliases so TempleGate SVGs still work ── */
-  --wine-muted:  #B84E88;
-  --wine-muted2: #8B3A6A;
-  --gold-warm:   #BE9850;
-  --gold-pale:   #F0D8E8;
-  --line-gold:   rgba(158, 120, 52, 0.28);
-  --ivory-warm:  #F2E2EE;
+  --wine-muted: #c968a3;
+  --wine-muted2: #984b7a;
+  --gold-warm: #be9850;
+  --gold-pale: #f0d8e8;
+  --line-gold: rgba(158, 120, 52, 0.34);
+  --ivory-warm: #3a2333;
 
   /* ── Typography ──────────────────────────────────── */
-  --font-display:    'Cormorant Garamond', Georgia, serif;
-  --font-body:       'Work Sans', -apple-system, sans-serif;
-  --font-devanagari: 'Noto Serif Devanagari', serif;
+  --font-display: "Cormorant Garamond", Georgia, serif;
+  --font-body: "Work Sans", -apple-system, sans-serif;
+  --font-devanagari: "Noto Serif Devanagari", serif;
 
   /* ── Layout ──────────────────────────────────────── */
   --content-max: 480px;
@@ -44,8 +44,12 @@
   color-scheme: light;
 }
 
-* { box-sizing: border-box; }
-html { -webkit-text-size-adjust: 100%; }
+* {
+  box-sizing: border-box;
+}
+html {
+  -webkit-text-size-adjust: 100%;
+}
 
 body {
   margin: 0;
@@ -58,27 +62,45 @@ body {
   overflow-x: hidden;
 }
 
-#root { min-height: 100vh; }
+#root {
+  min-height: 100vh;
+}
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
   font-family: var(--font-display);
   font-weight: 500;
   margin: 0;
   color: var(--wine-deep);
 }
 
-p  { margin: 0; }
-a  { color: inherit; }
-button { font-family: inherit; cursor: pointer; }
-img { max-width: 100%; display: block; }
+p {
+  margin: 0;
+}
+a {
+  color: inherit;
+}
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+img {
+  max-width: 100%;
+  display: block;
+}
 
-.devanagari { font-family: var(--font-devanagari); }
+.devanagari {
+  font-family: var(--font-devanagari);
+}
 
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after {
-    animation-duration:        0.001ms !important;
-    animation-iteration-count: 1       !important;
-    transition-duration:       0.001ms !important;
-    scroll-behavior:           auto    !important;
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
   }
 }

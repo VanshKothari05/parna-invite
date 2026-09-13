@@ -1,10 +1,10 @@
-import { useRef } from 'react';
-import { motion, useInView, useReducedMotion } from 'framer-motion';
-import { FloralSeparator } from '../components/FloralAccent';
+import { useRef } from "react";
+import { motion, useInView, useReducedMotion } from "framer-motion";
+import { FloralSeparator } from "../components/FloralAccent";
 
 const MAPS_URL =
-  'https://www.google.com/maps/search/?api=1&query=' +
-  encodeURIComponent('Flags Banquet Hall, Liberty Garden, Malad West, Mumbai');
+  "https://www.google.com/maps/search/?api=1&query=" +
+  encodeURIComponent("Flags Banquet Hall, Liberty Garden, Malad West, Mumbai");
 
 const container = {
   hidden: {},
@@ -13,21 +13,25 @@ const container = {
 
 const item = {
   hidden: { opacity: 0, y: 18 },
-  show:   { opacity: 1, y: 0,  transition: { duration: 0.78, ease: [0.22, 1, 0.36, 1] } },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.78, ease: [0.22, 1, 0.36, 1] },
+  },
 };
 
-export default function DetailsSection() {
-  const ref          = useRef(null);
+export default function DetailsSection({ onLocationClick }) {
+  const ref = useRef(null);
   const shouldReduce = useReducedMotion();
-  const inView       = useInView(ref, { once: true, margin: '-3% 0px' });
+  const inView = useInView(ref, { once: true, margin: "-3% 0px" });
 
   return (
     <section className="details" ref={ref}>
       <motion.div
         className="details__inner"
         variants={container}
-        initial={shouldReduce ? false : 'hidden'}
-        animate={inView || shouldReduce ? 'show' : 'hidden'}
+        initial={shouldReduce ? false : "hidden"}
+        animate={inView || shouldReduce ? "show" : "hidden"}
       >
         {/* Floral separator */}
         <motion.div variants={item} className="details__top-floral">
@@ -47,7 +51,11 @@ export default function DetailsSection() {
         </motion.div>
 
         {/* Rule */}
-        <motion.div variants={item} className="details__rule" aria-hidden="true" />
+        <motion.div
+          variants={item}
+          className="details__rule"
+          aria-hidden="true"
+        />
 
         {/* Venue */}
         <motion.div variants={item} className="details__venue">
@@ -60,6 +68,7 @@ export default function DetailsSection() {
             href={MAPS_URL}
             target="_blank"
             rel="noopener noreferrer"
+            onClick={onLocationClick}
             aria-label="Open Flags Banquet Hall on Google Maps"
           >
             <LocationPin />
@@ -72,7 +81,11 @@ export default function DetailsSection() {
         </motion.div>
 
         {/* Rule */}
-        <motion.div variants={item} className="details__rule" aria-hidden="true" />
+        <motion.div
+          variants={item}
+          className="details__rule"
+          aria-hidden="true"
+        />
 
         {/* RSVP */}
         <motion.div variants={item} className="details__rsvp">
@@ -87,12 +100,27 @@ export default function DetailsSection() {
 
 function LocationPin() {
   return (
-    <svg width="13" height="17" viewBox="0 0 13 17" fill="none" aria-hidden="true">
+    <svg
+      width="13"
+      height="17"
+      viewBox="0 0 13 17"
+      fill="none"
+      aria-hidden="true"
+    >
       <path
         d="M6.5 1C3.74 1 1.5 3.24 1.5 6c0 4.2 5 10 5 10s5-5.8 5-10c0-2.76-2.24-5-5-5z"
-        stroke="currentColor" strokeWidth="1.15" fill="none"
+        stroke="currentColor"
+        strokeWidth="1.15"
+        fill="none"
       />
-      <circle cx="6.5" cy="6" r="1.8" stroke="currentColor" strokeWidth="1" fill="none" />
+      <circle
+        cx="6.5"
+        cy="6"
+        r="1.8"
+        stroke="currentColor"
+        strokeWidth="1"
+        fill="none"
+      />
     </svg>
   );
 }

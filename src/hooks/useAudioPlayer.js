@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from "react";
 
 /**
  * Manages the background music.
@@ -8,27 +8,42 @@ import { useCallback, useEffect, useRef, useState } from 'react';
  */
 export function useAudioPlayer(src) {
   const audioRef = useRef(null);
+  const resumeOnReturnRef = useRef(false);
   const [isPlaying, setIsPlaying] = useState(false);
-  const [isReady, setIsReady] = useState(false);
 
   useEffect(() => {
     const audio = new Audio(src);
     audio.loop = true;
-    audio.preload = 'auto';
+    audio.preload = "auto";
     audio.volume = 0.55;
     audioRef.current = audio;
-    const onCanPlay = () => setIsReady(true);
-    audio.addEventListener('canplaythrough', onCanPlay);
     return () => {
       audio.pause();
-      audio.removeEventListener('canplaythrough', onCanPlay);
       audioRef.current = null;
     };
   }, [src]);
 
+  const stop = useCallback(() => {
+    const audio = audioRef.current;
+    if (!audio) return;
+    resumeOnReturnRef.current = false;
+    audio.pause();
+    audio.currentTime = 0;
+    setIsPlaying(false);
+  }, []);
+
+  const pauseForNavigation = useCallback(() => {
+    const audio = audioRef.current;
+    if (!audio || audio.paused) return;
+    resumeOnReturnRef.current = true;
+    audio.pause();
+    setIsPlaying(false);
+  }, []);
+
   const play = useCallback(() => {
     const audio = audioRef.current;
     if (!audio) return;
+    resumeOnReturnRef.current = false;
     audio
       .play()
       .then(() => setIsPlaying(true))
@@ -42,15 +57,42 @@ export function useAudioPlayer(src) {
     const audio = audioRef.current;
     if (!audio) return;
     if (audio.paused) {
+      resumeOnReturnRef.current = false;
       audio
         .play()
         .then(() => setIsPlaying(true))
         .catch(() => setIsPlaying(false));
     } else {
+      resumeOnReturnRef.current = false;
       audio.pause();
       setIsPlaying(false);
     }
   }, []);
 
-  return { play, toggle, isPlaying, isReady };
+  useEffect(() => {
+    const resumeOnReturn = () => {
+      if (document.visibilityState !== "visible" || !resumeOnReturnRef.current)
+        return;
+      resumeOnReturnRef.current = false;
+      play();
+    };
+    const pauseWhenHidden = () => {
+      if (document.visibilityState === "hidden") pauseForNavigation();
+    };
+
+    window.addEventListener("pagehide", stop);
+    window.addEventListener("focus", resumeOnReturn);
+    window.addEventListener("pageshow", resumeOnReturn);
+    document.addEventListener("visibilitychange", pauseWhenHidden);
+    document.addEventListener("visibilitychange", resumeOnReturn);
+    return () => {
+      window.removeEventListener("pagehide", stop);
+      window.removeEventListener("focus", resumeOnReturn);
+      window.removeEventListener("pageshow", resumeOnReturn);
+      document.removeEventListener("visibilitychange", pauseWhenHidden);
+      document.removeEventListener("visibilitychange", resumeOnReturn);
+    };
+  }, [pauseForNavigation, play, stop]);
+
+  return { play, toggle, stop, pauseForNavigation, isPlaying };
 }

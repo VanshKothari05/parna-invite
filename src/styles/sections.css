@@ -9,7 +9,7 @@
 ═══════════════════════════════════════════════════════ */
 .hero {
   /* NO min-height — section is exactly as tall as content */
-  background: linear-gradient(158deg, #FAF3F8 0%, #F5EBF2 40%, #EDE0F2 100%);
+  background: linear-gradient(158deg, #241722 0%, #2a1927 40%, #301c2d 100%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -23,9 +23,21 @@
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(circle at 75% 18%, rgba(184, 78, 136, 0.12) 0%, transparent 46%),
-    radial-gradient(circle at 20% 78%, rgba(192, 173, 206, 0.16) 0%, transparent 42%),
-    radial-gradient(circle at 50% 100%, rgba(234, 184, 216, 0.20) 0%, transparent 38%);
+    radial-gradient(
+      circle at 75% 18%,
+      rgba(231, 132, 192, 0.12) 0%,
+      transparent 46%
+    ),
+    radial-gradient(
+      circle at 20% 78%,
+      rgba(173, 134, 170, 0.12) 0%,
+      transparent 42%
+    ),
+    radial-gradient(
+      circle at 50% 100%,
+      rgba(215, 139, 188, 0.14) 0%,
+      transparent 38%
+    );
   pointer-events: none;
 }
 
@@ -44,40 +56,185 @@
 .petal {
   position: absolute;
   top: -30px;
-  border-radius: 100% 0;           /* classic teardrop/petal */
+  border-radius: 100% 0; /* classic teardrop/petal */
   animation: petalFall var(--dur, 10s) linear var(--del, 0s) infinite;
   transform-origin: center center;
   opacity: 0;
 }
 
 @keyframes petalFall {
-  0%   { transform: translateY(-20px) rotate(var(--rot, 0deg));   opacity: 0; }
-  8%   { opacity: var(--op, 0.36); }
-  90%  { opacity: var(--op, 0.36); }
+  0% {
+    transform: translateY(-20px) rotate(var(--rot, 0deg));
+    opacity: 0;
+  }
+  8% {
+    opacity: var(--op, 0.36);
+  }
+  90% {
+    opacity: var(--op, 0.36);
+  }
   100% {
-    transform:
-      translateY(100vh)
-      rotate(calc(var(--rot, 0deg) + 180deg))
+    transform: translateY(100vh) rotate(calc(var(--rot, 0deg) + 180deg))
       translateX(var(--dx, 0px));
     opacity: 0;
   }
 }
 
 /* 14 petals — mix of rose, orchid, lavender */
-.petal--1  { left: 6%;   width: 9px;  height: 14px; background: var(--rose-soft); --dur:9s;   --del:0s;    --rot:-15deg; --dx:18px;  --op:0.38; }
-.petal--2  { left: 18%;  width: 7px;  height: 11px; background: var(--blush-mid); --dur:12s;  --del:1.8s;  --rot:28deg;  --dx:-14px; --op:0.32; }
-.petal--3  { left: 32%;  width: 6px;  height: 9px;  background: var(--lavender);  --dur:8s;   --del:3.4s;  --rot:42deg;  --dx:10px;  --op:0.28; }
-.petal--4  { left: 46%;  width: 10px; height: 15px; background: var(--rose-soft); --dur:11s;  --del:0.6s;  --rot:-32deg; --dx:22px;  --op:0.35; }
-.petal--5  { left: 60%;  width: 7px;  height: 11px; background: var(--blush-mid); --dur:9.5s; --del:2.6s;  --rot:18deg;  --dx:-18px; --op:0.30; }
-.petal--6  { left: 78%;  width: 8px;  height: 12px; background: var(--lavender);  --dur:13s;  --del:4.2s;  --rot:-22deg; --dx:8px;   --op:0.26; }
-.petal--7  { left: 88%;  width: 9px;  height: 13px; background: var(--rose-soft); --dur:10s;  --del:6.5s;  --rot:36deg;  --dx:-10px; --op:0.32; }
-.petal--8  { left: 12%;  width: 6px;  height: 9px;  background: var(--blush-mid); --dur:8.5s; --del:7.8s;  --rot:-12deg; --dx:16px;  --op:0.28; }
-.petal--9  { left: 54%;  width: 11px; height: 16px; background: var(--lavender);  --dur:14s;  --del:1.4s;  --rot:52deg;  --dx:-28px; --op:0.22; }
-.petal--10 { left: 28%;  width: 8px;  height: 12px; background: var(--rose-soft); --dur:9s;   --del:5.2s;  --rot:-42deg; --dx:12px;  --op:0.30; }
-.petal--11 { left: 70%;  width: 7px;  height: 10px; background: var(--blush-mid); --dur:11s;  --del:3.0s;  --rot:22deg;  --dx:-8px;  --op:0.26; }
-.petal--12 { left: 42%;  width: 9px;  height: 13px; background: var(--lavender);  --dur:12s;  --del:8.2s;  --rot:-27deg; --dx:20px;  --op:0.24; }
-.petal--13 { left: 82%;  width: 6px;  height: 9px;  background: var(--rose-soft); --dur:10.5s;--del:2.0s;  --rot:15deg;  --dx:-12px; --op:0.30; }
-.petal--14 { left: 36%;  width: 8px;  height: 12px; background: var(--blush-mid); --dur:9s;   --del:10s;   --rot:-38deg; --dx:24px;  --op:0.28; }
+.petal--1 {
+  left: 6%;
+  width: 9px;
+  height: 14px;
+  background: var(--rose-soft);
+  --dur: 9s;
+  --del: 0s;
+  --rot: -15deg;
+  --dx: 18px;
+  --op: 0.38;
+}
+.petal--2 {
+  left: 18%;
+  width: 7px;
+  height: 11px;
+  background: var(--blush-mid);
+  --dur: 12s;
+  --del: 1.8s;
+  --rot: 28deg;
+  --dx: -14px;
+  --op: 0.32;
+}
+.petal--3 {
+  left: 32%;
+  width: 6px;
+  height: 9px;
+  background: var(--lavender);
+  --dur: 8s;
+  --del: 3.4s;
+  --rot: 42deg;
+  --dx: 10px;
+  --op: 0.28;
+}
+.petal--4 {
+  left: 46%;
+  width: 10px;
+  height: 15px;
+  background: var(--rose-soft);
+  --dur: 11s;
+  --del: 0.6s;
+  --rot: -32deg;
+  --dx: 22px;
+  --op: 0.35;
+}
+.petal--5 {
+  left: 60%;
+  width: 7px;
+  height: 11px;
+  background: var(--blush-mid);
+  --dur: 9.5s;
+  --del: 2.6s;
+  --rot: 18deg;
+  --dx: -18px;
+  --op: 0.3;
+}
+.petal--6 {
+  left: 78%;
+  width: 8px;
+  height: 12px;
+  background: var(--lavender);
+  --dur: 13s;
+  --del: 4.2s;
+  --rot: -22deg;
+  --dx: 8px;
+  --op: 0.26;
+}
+.petal--7 {
+  left: 88%;
+  width: 9px;
+  height: 13px;
+  background: var(--rose-soft);
+  --dur: 10s;
+  --del: 6.5s;
+  --rot: 36deg;
+  --dx: -10px;
+  --op: 0.32;
+}
+.petal--8 {
+  left: 12%;
+  width: 6px;
+  height: 9px;
+  background: var(--blush-mid);
+  --dur: 8.5s;
+  --del: 7.8s;
+  --rot: -12deg;
+  --dx: 16px;
+  --op: 0.28;
+}
+.petal--9 {
+  left: 54%;
+  width: 11px;
+  height: 16px;
+  background: var(--lavender);
+  --dur: 14s;
+  --del: 1.4s;
+  --rot: 52deg;
+  --dx: -28px;
+  --op: 0.22;
+}
+.petal--10 {
+  left: 28%;
+  width: 8px;
+  height: 12px;
+  background: var(--rose-soft);
+  --dur: 9s;
+  --del: 5.2s;
+  --rot: -42deg;
+  --dx: 12px;
+  --op: 0.3;
+}
+.petal--11 {
+  left: 70%;
+  width: 7px;
+  height: 10px;
+  background: var(--blush-mid);
+  --dur: 11s;
+  --del: 3s;
+  --rot: 22deg;
+  --dx: -8px;
+  --op: 0.26;
+}
+.petal--12 {
+  left: 42%;
+  width: 9px;
+  height: 13px;
+  background: var(--lavender);
+  --dur: 12s;
+  --del: 8.2s;
+  --rot: -27deg;
+  --dx: 20px;
+  --op: 0.24;
+}
+.petal--13 {
+  left: 82%;
+  width: 6px;
+  height: 9px;
+  background: var(--rose-soft);
+  --dur: 10.5s;
+  --del: 2s;
+  --rot: 15deg;
+  --dx: -12px;
+  --op: 0.3;
+}
+.petal--14 {
+  left: 36%;
+  width: 8px;
+  height: 12px;
+  background: var(--blush-mid);
+  --dur: 9s;
+  --del: 10s;
+  --rot: -38deg;
+  --dx: 24px;
+  --op: 0.28;
+}
 
 /* ── Inner content column ───────────────────────────── */
 .hero__inner {
@@ -145,8 +302,14 @@
   pointer-events: none;
   z-index: 3;
 }
-.hero__floral--tl { top: 0;  left: 0;   }
-.hero__floral--tr { top: 0;  right: 0;  }
+.hero__floral--tl {
+  top: 0;
+  left: 0;
+}
+.hero__floral--tr {
+  top: 0;
+  right: 0;
+}
 
 /* Arch-topped portrait frame */
 .hero__photo-wrap {
@@ -158,9 +321,9 @@
   /* Soft orchid shadow */
   box-shadow:
     0 24px 60px rgba(88, 16, 64, 0.22),
-    0  8px 22px rgba(88, 16, 64, 0.12),
-    0  0   0 1px rgba(184, 78, 136, 0.24),
-    0  0  40px rgba(192, 173, 206, 0.18);
+    0 8px 22px rgba(88, 16, 64, 0.12),
+    0 0 0 1px rgba(184, 78, 136, 0.24),
+    0 0 40px rgba(192, 173, 206, 0.18);
 }
 
 .hero__photo {
@@ -175,7 +338,7 @@
 .hero__curtain {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to bottom, #FAF3F8 0%, #EDE0F2 100%);
+  background: linear-gradient(to bottom, #241722 0%, #301c2d 100%);
   z-index: 2;
   pointer-events: none;
 }
@@ -206,7 +369,7 @@
    together land within ~1.4 screenfuls naturally.
 ═══════════════════════════════════════════════════════ */
 .details {
-  background: linear-gradient(158deg, #EDE0F2 0%, #E4D2E8 36%, #F5EDE4 100%);
+  background: linear-gradient(158deg, #301c2d 0%, #2a1927 36%, #241722 100%);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -217,22 +380,32 @@
 
 /* Top blend */
 .details::before {
-  content: '';
+  content: "";
   position: absolute;
-  top: 0; left: 0; right: 0;
+  top: 0;
+  left: 0;
+  right: 0;
   height: 48px;
-  background: linear-gradient(to bottom, #EDE0F2, transparent);
+  background: linear-gradient(to bottom, #301c2d, transparent);
   pointer-events: none;
 }
 
 /* Background blobs */
 .details::after {
-  content: '';
+  content: "";
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(circle at 18% 75%, rgba(192, 173, 206, 0.16) 0%, transparent 42%),
-    radial-gradient(circle at 82% 22%, rgba(245, 222, 206, 0.18) 0%, transparent 38%);
+    radial-gradient(
+      circle at 18% 75%,
+      rgba(173, 134, 170, 0.11) 0%,
+      transparent 42%
+    ),
+    radial-gradient(
+      circle at 82% 22%,
+      rgba(215, 139, 188, 0.1) 0%,
+      transparent 38%
+    );
   pointer-events: none;
 }
 
@@ -248,7 +421,9 @@
   text-align: center;
 }
 
-.details__top-floral { margin-bottom: 24px; }
+.details__top-floral {
+  margin-bottom: 24px;
+}
 
 /* ── Date / Time ────────────────────────────────────── */
 .details__event {
@@ -307,7 +482,12 @@
 .details__rule {
   width: min(160px, 46vw);
   height: 1px;
-  background: linear-gradient(to right, transparent, var(--rose-soft), transparent);
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--rose-soft),
+    transparent
+  );
   margin: 18px 0;
 }
 
@@ -341,8 +521,8 @@
   margin-top: 12px;
   padding: 11px 22px;
   border-radius: 999px;
-  border: 1px solid rgba(184, 78, 136, 0.3);
-  background: rgba(234, 184, 216, 0.28);
+  border: 1px solid rgba(231, 132, 192, 0.38);
+  background: rgba(215, 139, 188, 0.18);
   color: var(--wine);
   text-decoration: none;
   font-family: var(--font-body);
@@ -350,12 +530,19 @@
   font-weight: 500;
   letter-spacing: 0.04em;
   min-height: 44px;
-  transition: background 0.22s ease, border-color 0.22s ease;
+  transition:
+    background 0.22s ease,
+    border-color 0.22s ease;
   -webkit-tap-highlight-color: transparent;
 }
-.details__map-btn:active { background: rgba(122, 31, 85, 0.09); }
+.details__map-btn:active {
+  background: rgba(122, 31, 85, 0.09);
+}
 @media (hover: hover) {
-  .details__map-btn:hover { background: rgba(122, 31, 85, 0.07); border-color: rgba(184, 78, 136, 0.5); }
+  .details__map-btn:hover {
+    background: rgba(122, 31, 85, 0.07);
+    border-color: rgba(184, 78, 136, 0.5);
+  }
 }
 
 .details__parking {
@@ -369,7 +556,8 @@
   margin-top: 6px;
 }
 .details__parking-dot {
-  width: 4px; height: 4px;
+  width: 4px;
+  height: 4px;
   border-radius: 50%;
   background: var(--rose-soft);
   flex-shrink: 0;
